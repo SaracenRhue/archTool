@@ -102,6 +102,8 @@ aliases () {
 }
 
 theme_tweaks() {
+    yay -S chrome-gnome-shell
+    yay -S curl
     yay -S wget
     cd Pictures
     wget http://wallpoper.com/images/00/39/10/60/linux-arch_00391060.png
