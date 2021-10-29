@@ -35,9 +35,8 @@ enable_root () {
     echo "type 'su' to switch to root user"
 }
 
-i_albert {
-    yay -S alber-bin
-
+i_albert () {
+    yay -S albert-bin
 }
 
 i_brave () {
