@@ -116,6 +116,11 @@ theme_tweaks() {
     gsettings set org.gnome.desktop.background picture-uri 'file:///home/saracen/Pictures/PKt7K9T.jpg'
     mkdir ~/.themes
     mkdir ~/.icons
+    mv ~/themes/* ~/.themes
+    mv ~/icons/* ~/.icons
+    gsettings set org.gnome.desktop.interface gtk-theme "Orchris-green-dark"
+    gsettings set org.gnome.desktop.wm.preferences theme "Orchris-green-dark"
+    gsettings set org.gnome.desktop.interface icon-theme "Kora"
 }
 
 i_snapper () {
