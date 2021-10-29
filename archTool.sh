@@ -123,10 +123,6 @@ theme_tweaks() {
     gsettings set org.gnome.desktop.interface icon-theme "Kora"
 }
 
-i_snapper () {
-    
-}
-
 quit () {
     yay -Qdt 
     exit
@@ -168,8 +164,8 @@ EOF
              i_py3
              aliases 
              ;;
-        "2") i_nvidia
-        "3") cust_grub
+        "2") i_nvidia ;;
+        "3") cust_grub ;;
         "0") quit && break ;;
      * )  echo "invalid option" ;;
     esac
