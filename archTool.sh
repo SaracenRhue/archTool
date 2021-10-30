@@ -29,12 +29,6 @@ u_python () {
     yay -S python-pip 
 }
 
-enable_root () {
-    echo "enabling root user, enter new password"
-    sudo passwd root
-    echo "type 'su' to switch to root user"
-}
-
 i_albert () {
     yay -S albert-bin
 }
