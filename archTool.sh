@@ -109,7 +109,7 @@ theme_tweaks() {
     gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
     gsettings set org.gnome.desktop.background picture-uri 'file:///home/saracen/Pictures/PKt7K9T.jpg'
     mv ~/themes/.themes ~/
-    mv ~/themes/.icons ~/.icons
+    mv ~/themes/.icons ~/
     gsettings set org.gnome.desktop.interface gtk-theme "Orchris-green-dark"
     gsettings set org.gnome.desktop.wm.preferences theme "Orchris-green-dark"
     gsettings set org.gnome.desktop.interface icon-theme "Kora"
