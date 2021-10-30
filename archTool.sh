@@ -115,6 +115,7 @@ theme_tweaks() {
     gsettings set org.gnome.desktop.interface gtk-theme "Orchris-green-dark"
     gsettings set org.gnome.desktop.wm.preferences theme "Orchris-green-dark"
     gsettings set org.gnome.desktop.interface icon-theme "Kora"
+    gsettings set org.gnome.desktop.interface cursor-theme 'macOSBigSur'
 }
 
 quit () {
