@@ -27,8 +27,8 @@ clean_gnome () {
 
 aliases () {
     echo "neofetch" >> ~/.bashrc
-    echo "alias i='yay -S'" >> ~/.bashrc
-    echo "alias r='yay -R'" >> ~/.bashrc
+    echo "alias i='yay -S --noconfirm'" >> ~/.bashrc
+    echo "alias r='yay -R --noconfirm'" >> ~/.bashrc
     echo "alias s='yay -Ss'" >> ~/.bashrc
     echo "alias tool='sudo bash archTool.sh'" >> ~/.bashrc
     echo "done..."
@@ -69,6 +69,7 @@ quit () {
 }
 
 PKGS = (
+    'bash-completion'
     'python3'
     'python-pip'
     'celluloid'
@@ -88,6 +89,8 @@ PKGS = (
     'tree'
     'tor-browser'
     'chrome-gnome-shell'
+    'zoom'
+    'github-desktop-bin'
     'curl'
     'wget'
 )
