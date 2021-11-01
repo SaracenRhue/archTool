@@ -19,8 +19,8 @@ i_yay () {
 }
 
 clean_gnome () {
-    yay -R totem
-    yay -R nano
+    yay -R --noconfirm totem
+    yay -R --noconfirm nano
 }
 
 
@@ -68,31 +68,31 @@ quit () {
     exit
 }
 
-PKGS = (
-    'bash-completion'
-    'python3'
-    'python-pip'
-    'celluloid'
-    'discord'
-    'firefox'
-    'gnome-boxes'
-    'gparted'
-    'grub-customizer'
-    'neofetch'
-    'nodejs'
-    'npm'
-    'kazam'
-    'micro'
-    'visual-studio-code-bin'
-    'thunderbird'
-    'nextcloud-client'
-    'tree'
-    'tor-browser'
-    'chrome-gnome-shell'
-    'zoom'
-    'github-desktop-bin'
-    'curl'
-    'wget'
+PKGS=(
+'bash-completion'
+'python3'
+'python-pip'
+'celluloid'
+'discord'
+'firefox'
+'gnome-boxes'
+'gparted'
+'grub-customizer'
+'neofetch'
+'nodejs'
+'npm'
+'kazam'
+'micro'
+'visual-studio-code-bin'
+'thunderbird'
+'nextcloud-client'
+'tree'
+'tor-browser'
+'chrome-gnome-shell'
+'zoom'
+'github-desktop-bin'
+'curl'
+'wget'
 )
 i_packages() {
     for PKG in "${PKGS[@]}"; do
