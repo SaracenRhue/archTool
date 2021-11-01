@@ -100,6 +100,18 @@ i_packages() {
     done
 }
 
+i_graphicsdriver() {
+     # Graphics Drivers find and install
+    if lspci | grep -E "NVIDIA|GeForce"; then
+        pacman -S nvidia --noconfirm --needed
+    	nvidia-xconfig
+    elif lspci | grep -E "Radeon"; then
+        pacman -S xf86-video-amdgpu --noconfirm --needed
+    elif lspci | grep -E "Integrated Graphics Controller"; then
+        pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils --needed --noconfirm
+    fi
+}
+
 
 
 while :
@@ -109,8 +121,7 @@ do
     Please enter your choice:
 
      (1) setup
-     (2) inst nvidia drivers
-     (3) inst cust grub
+     (2) inst cust grub
      (0) quit
     ------------------------------
 EOF
@@ -118,13 +129,13 @@ EOF
     case "$REPLY" in
         "1") i_yay
              update
+             i_graphicsdriver
              i_packages
              clean_gnome
              aliases 
              theme_tweaks
              ;;
-        "2") yay -S --noconfirm nvidia ;;
-        "3") cust_grub ;;
+        "2") cust_grub ;;
         "0") quit && break ;;
      * )  echo "invalid option" ;;
     esac
