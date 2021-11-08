@@ -91,6 +91,7 @@ PKGS=(
 'firefox'
 'gnome-boxes'
 'gparted'
+'htop'
 'grub-customizer'
 'neofetch'
 'nodejs'
