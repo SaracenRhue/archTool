@@ -184,6 +184,7 @@ EOF
              r_packages
              default_zsh
              aliases
+             i_pip_mods
              ;;
         "2") theme_tweaks ;;
         "3") cust_grub ;;
