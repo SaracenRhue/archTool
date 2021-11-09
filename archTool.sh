@@ -24,16 +24,8 @@ clean_gnome () {
 }
 
 
-bash_aliases () {
-    echo "neofetch" >> ~/.bashrc
-    echo "alias i='yay -S --noconfirm'" >> ~/.bashrc
-    echo "alias r='yay -R --noconfirm'" >> ~/.bashrc
-    echo "alias s='yay -Ss'" >> ~/.bashrc
-    echo "done..."
-    source ~/.bashrc
-}
 
-zsh_aliases () {
+aliases () {
     echo "neofetch" >> ~/.zshrc
     echo "alias i='yay -S --noconfirm'" >> ~/.zshrc
     echo "alias r='yay -R --noconfirm'" >> ~/.zshrc
@@ -78,41 +70,59 @@ quit () {
     exit
 }
 
-PKGS=(
-'arc'
-'albert'
-'grub'
-'grub-btrfs'
-'bash-completion'
-'python3'
-'python-pip'
-'celluloid'
-'discord'
-'firefox'
-'gnome-boxes'
-'gparted'
-'htop'
-'grub-customizer'
-'neofetch'
-'nodejs'
-'npm'
-'kazam'
-'micro'
-'visual-studio-code-bin'
-'thunderbird'
-'nextcloud-client'
-'timeshift'
-'tree'
-'tor-browser'
-'zoom'
-'github-desktop-bin'
-'curl'
-'wget'
-'zsh'
-'zsh-autosuggestions'
-'zsh-syntax-highlighting'
-)
+
+r_packages(){
+    PKGS=(
+    'yelp'
+    'python'
+    'firefox-esr'
+    'chromium'
+    'totem'
+    'nano'
+    )
+
+    for PKG in "${PKGS[@]}"; do
+        yay -R --noconfirm $PKG
+    done
+
+}
+
 i_packages() {
+    PKGS=(
+    'arc'
+    'albert'
+    'grub'
+    'grub-btrfs'
+    'bash-completion'
+    'python3'
+    'python-pip'
+    'celluloid'
+    'discord'
+    'firefox'
+    'gnome-boxes'
+    'gparted'
+    'htop'
+    'grub-customizer'
+    'neofetch'
+    'nodejs'
+    'npm'
+    'kazam'
+    'micro'
+    'visual-studio-code-bin'
+    'thunderbird'
+    'nextcloud-client'
+    'timeshift'
+    'tree'
+    'tor-browser'
+    'zoom'
+    'github-desktop-bin'
+    'curl'
+    'wget'
+    'zsh'
+    'zsh-autosuggestions'
+    'zsh-syntax-highlighting'
+    )
+
     for PKG in "${PKGS[@]}"; do
         yay -S --noconfirm $PKG
     done
@@ -120,6 +130,23 @@ i_packages() {
 
 default_zsh() {
     chsh -s $(which zsh)
+}
+
+i_pip_mods(){
+    PKGS=(
+    'eel'
+    'pyenv'
+    'numpy'
+    'openpyxl'
+    'requests'
+    'selenium'
+    'pyautogui'
+    'beautifulsoup4'
+    )
+
+    for PKG in "${PKGS[@]}"; do
+        pip install $PKG
+    done
 }
 
 i_graphicsdriver() {
@@ -154,9 +181,10 @@ EOF
              update
              i_graphicsdriver
              i_packages
-             clean_gnome
+             r_packages
+             default_zsh
+             aliases
              ;;
-             zsh_aliases
         "2") theme_tweaks ;;
         "3") cust_grub ;;
         "0") quit && break ;;
