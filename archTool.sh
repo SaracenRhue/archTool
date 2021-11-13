@@ -57,7 +57,7 @@ quit () {
 }
 
 
-r_packages(){
+r_gnome_packages(){
     PKGS=(
     'yelp'
     'python'
@@ -130,6 +130,8 @@ EOF
     esac
     sleep 1
 done
+
+
 
 
 
