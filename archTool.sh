@@ -18,13 +18,6 @@ i_yay () {
 
 }
 
-clean_gnome () {
-    yay -R --noconfirm totem
-    yay -R --noconfirm nano
-}
-
-
-
 bash_aliases () {
     echo "neofetch" >> ~/.bashrc
     echo "alias i='yay -S --noconfirm'" >> ~/.bashrc
@@ -136,7 +129,7 @@ done
 
 
 
-# theme_tweaks() {
+# gonome_setup() {
 #     yay -S --noconfirm gnome-tweaks chrome-gnome-shell gnome-shell-extension-dash-to-dock
 #     cd Pictures
 #     wget http://wallpoper.com/images/00/39/10/60/linux-arch_00391060.png
