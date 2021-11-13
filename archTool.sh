@@ -74,7 +74,7 @@ r_gnome_packages(){
 
 basic_packages() {
     yay -R --noconfirm python
-    yay -S --noconfirm arc albert grub grub-btrfs bash-completion python3 python-pip celluloid discord firefox gparted htop grub-customizer neofetch nodejs npm visual-studio-code-bin thunderbird nextcloud-client timeshift tree tor-browser zoom github-desktop-bin curl wget
+    yay -S --noconfirm arc albert grub grub-btrfs bash-completion python3 python-pip celluloid discord firefox gparted htop grub-customizer neofetch nodejs npm visual-studio-code-bin thunderbird nextcloud-client timeshift tree tor-browser zoom github-desktop-bin curl wget krusader
 }
 
 setup_zsh() {
