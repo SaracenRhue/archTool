@@ -109,7 +109,17 @@ setup_zsh() {
 }
 
 i_pip_mods(){
-    pip install eel pyenv numpy openpyxl requests selenium pyautogui beautifulsoup4
+    PKGS=(
+    'pyenv'
+    'beautyfulsoup4'
+    'requests'
+    'numpy'
+    'selenium'
+    )
+
+    for PKG in "${PKGS[@]}"; do
+        pip install $PKG
+    done
 }
 
 i_graphicsdriver() {
