@@ -133,7 +133,13 @@ i_graphicsdriver() {
     fi
 }
 
-
+setup_virt_Manager() {
+    yay -S --noconfirm virt-manager
+    sudo systemctl status libvirtd
+    sudo systemctl enable libvirtd
+    sudo systemctl start libvirtd
+    sudo usermod -a -G libvirt $(whoami)
+}
 
 while :
 do
