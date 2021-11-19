@@ -133,7 +133,7 @@ i_graphicsdriver() {
     fi
 }
 
-setup_virt_Manager() {
+setup_virt_manager() {
     yay -S --noconfirm virt-manager
     sudo systemctl status libvirtd
     sudo systemctl enable libvirtd
@@ -151,7 +151,9 @@ do
      (2) setup zsh
      (3) zsh aliases
      (4) bash aliases
-     (9) cust grub
+     (8) cust grub
+     (9) setup virt-manager
+     (10) quit
      (0) quit
     ------------------------------
 EOF
@@ -165,7 +167,8 @@ EOF
         "2") setup_zsh ;;
         "3") zsh_aliases ;;
         "4") bash_aliases ;;
-        "9") cust_grub ;;
+        "8") cust_grub ;;
+        "9") setup_virt_manager ;;
         "0") quit && break ;;
      * )  echo "invalid option" ;;
     esac
