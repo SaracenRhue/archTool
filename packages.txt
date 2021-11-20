@@ -13,9 +13,12 @@ grub-customizer
 htop
 krusader
 neofetch
-nodejs npm
+nodejs
+npm
 nextcloud-client
-python3 python-pip pyenv
+python3
+python-pip
+pyenv
 thunderbird
 timeshift
 tor-browser

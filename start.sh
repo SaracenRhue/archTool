@@ -75,19 +75,6 @@ setup_zsh() {
     chsh -s $(which zsh)
 }
 
-i_pip_mods(){
-    PKGS=(
-    'beautyfulsoup4'
-    'requests'
-    'numpy'
-    'selenium'
-    )
-
-    for PKG in "${PKGS[@]}"; do
-        pip install $PKG
-    done
-}
-
 i_graphicsdriver() {
      # Graphics Drivers find and install
     if lspci | grep -E "NVIDIA|GeForce"; then
@@ -101,11 +88,10 @@ i_graphicsdriver() {
 }
 
 setup_virt_manager() {
-    yay -S --noconfirm virt-manager
-    sudo systemctl status libvirtd
-    sudo systemctl enable libvirtd
-    sudo systemctl start libvirtd
-    sudo usermod -a -G libvirt $(whoami)
+    yay -S --noconfirm virt-manager qemu vde2 iptables-nft dnsmasq bridge-utils openbsd-netcat edk2-ovmf swtpmr
+    sudo systemctl enable libvirtd.service
+    sudo systemctl start libvirtd.service
+    sudo usermod -a -G libvirt $USER
 }
 
 while :
@@ -129,7 +115,6 @@ EOF
         "1") i_yay
              basic_packages
              i_graphicsdriver
-             i_pip_mods
              ;;
         "2") setup_zsh ;;
         "3") zsh_aliases ;;
