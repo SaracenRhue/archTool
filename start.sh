@@ -88,7 +88,12 @@ i_graphicsdriver() {
 }
 
 setup_virt_manager() {
-    yay -S --noconfirm virt-manager qemu vde2 iptables-nft dnsmasq bridge-utils openbsd-netcat edk2-ovmf swtpmr
+if [ dpkg -s <iptables> ]; then
+    echo "iptables is installed!"
+else
+    yay -S --noconfirm iptables-nft
+fi
+    yay -S --noconfirm virt-manager qemu vde2 dnsmasq bridge-utils openbsd-netcat edk2-ovmf swtpmr iptables-nft
     sudo systemctl enable libvirtd.service
     sudo systemctl start libvirtd.service
     sudo usermod -a -G libvirt $USER
