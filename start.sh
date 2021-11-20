@@ -67,39 +67,7 @@ r_gnome_packages(){
 
 basic_packages() {
     yay -R --noconfirm python
-    PKGS=(
-    'albert'
-    'arc'
-    'bash-completion'
-    'curl'
-    'discord'
-    'firefox'
-    'git'
-    'github-desktop-bin'
-    'gparted'
-    'grub'
-    'grub-btrfs'
-    'grub-customizer'
-    'htop'
-    'krusader'
-    'neofetch'
-    'nodejs npm'
-    'nextcloud-client'
-    'python3 python-pip pyenv'
-    'thunderbird'
-    'timeshift'
-    'tor-browser'
-    'tree'
-    'visual-studio-code-bin'
-    'vlc'
-    'wget'
-    'zoom'
-    )
-
-    for PKG in "${PKGS[@]}"; do
-        yay -S --noconfirm $PKG
-    done
-
+    yay -S --noconfirm - < packages.txt
 }
 
 setup_zsh() {
