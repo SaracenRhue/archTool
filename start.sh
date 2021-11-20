@@ -106,7 +106,6 @@ do
      (4) bash aliases
      (8) cust grub
      (9) setup virt-manager
-     (10) quit
      (0) quit
     ------------------------------
 EOF
