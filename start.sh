@@ -85,7 +85,7 @@ basic_packages() {
     'neofetch'
     'nodejs npm'
     'nextcloud-client'
-    'python3 python-pip'
+    'python3 python-pip pyenv'
     'thunderbird'
     'timeshift'
     'tor-browser'
@@ -109,7 +109,6 @@ setup_zsh() {
 
 i_pip_mods(){
     PKGS=(
-    'pyenv'
     'beautyfulsoup4'
     'requests'
     'numpy'
