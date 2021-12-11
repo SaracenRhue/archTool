@@ -123,7 +123,7 @@ EOF
         "3") zsh_aliases ;;
         "4") bash_aliases ;;
         "9") cust_grub ;;
-        "0") quit && break ;;
+        "0") sudo rm -fr LICENSE && quit && break ;;
      * )  echo "invalid option" ;;
     esac
     sleep 1
