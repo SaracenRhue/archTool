@@ -6,18 +6,6 @@ update () {
     yay -Qdt
 }
 
-i_yay () {
-    sudo pacman -S git base-devel
-    sudo git clone https://aur.archlinux.org/yay.git
-    sudo chown -R saracen:users ./yay
-    cd yay
-    makepkg -si
-    cd
-    sudo rm -fr yay
-    source ~/.bashrc
-
-}
-
 bash_aliases () {
     echo "neofetch" >> ~/.bashrc
     echo "alias i='yay -S --noconfirm'" >> ~/.bashrc
@@ -110,10 +98,17 @@ do
 EOF
     read -n1 -s
     case "$REPLY" in
-        "1") i_yay
+        "1") sudo pacman -S git base-devel
+             sudo git clone https://aur.archlinux.org/yay.git
+             sudo chown -R saracen:users ./yay
+             cd yay
+             makepkg -si
+             cd
+             sudo rm -fr yay
+             source ~/.bashrc
+             cd archTool
              yay -R --noconfirm python
              yay -S --needed --noconfirm - < packages.txt
-             basic_packages
              i_graphicsdriver
              setup_virt_manager
              ;;
