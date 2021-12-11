@@ -56,10 +56,9 @@ r_gnome_packages(){
 
 setup_zsh() {
     yay -S --noconfirm zsh zsh-autosuggestions zsh-syntax-highlighting
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-    echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.zshrc
-    echo "plugins=(zsh-autosuggestions)" >> ~/.zshrc
+    #echo "plugins=(zsh-autosuggestions)" >> ~/.zshrc
+    #sudo git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+    #echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.zshrc
     chsh -s $(which zsh)
 }
 
@@ -88,7 +87,7 @@ do
     cat<<EOF
     Please enter your choice:
 
-     (1) basic packages
+     (1) basic setup
      (2) setup zsh
      (3) zsh aliases
      (4) bash aliases
