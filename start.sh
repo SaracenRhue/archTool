@@ -109,7 +109,6 @@ do
      (3) zsh aliases
      (4) bash aliases
      (8) cust grub
-     (9) setup virt-manager
      (0) quit
     ------------------------------
 EOF
@@ -118,12 +117,12 @@ EOF
         "1") i_yay
              basic_packages
              i_graphicsdriver
+             setup_virt_manager
              ;;
         "2") setup_zsh ;;
         "3") zsh_aliases ;;
         "4") bash_aliases ;;
         "8") cust_grub ;;
-        "9") setup_virt_manager ;;
         "0") quit && break ;;
      * )  echo "invalid option" ;;
     esac
