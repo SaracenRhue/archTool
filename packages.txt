@@ -1,6 +1,7 @@
 albert
 arc
 bash-completion
+celluloid
 curl
 discord
 firefox
@@ -9,7 +10,6 @@ github-desktop-bin
 gparted
 grub
 grub-btrfs
-grub-customizer
 htop
 krusader
 neofetch
@@ -24,6 +24,5 @@ timeshift
 tor-browser
 tree
 visual-studio-code-bin
-vlc
 wget
 zoom

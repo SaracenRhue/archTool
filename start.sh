@@ -72,6 +72,10 @@ basic_packages() {
 
 setup_zsh() {
     yay -S --noconfirm zsh zsh-autosuggestions zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+    echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.zshrc
+    echo "plugins=(zsh-autosuggestions)" >> ~/.zshrc
     chsh -s $(which zsh)
 }
 
