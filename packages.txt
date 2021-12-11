@@ -1,6 +1,8 @@
 arc
 bash-completion
+brave-browser
 celluloid
+cmatrix
 curl
 discord
 firefox

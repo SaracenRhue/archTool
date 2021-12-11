@@ -65,10 +65,6 @@ r_gnome_packages(){
 
 }
 
-basic_packages() {
-    yay -R --noconfirm python
-    yay -S --noconfirm - < packages.txt
-}
 
 setup_zsh() {
     yay -S --noconfirm zsh zsh-autosuggestions zsh-syntax-highlighting
@@ -115,6 +111,8 @@ EOF
     read -n1 -s
     case "$REPLY" in
         "1") i_yay
+             yay -R --noconfirm python
+             yay -S --needed --noconfirm - < packages.txt
              basic_packages
              i_graphicsdriver
              setup_virt_manager
