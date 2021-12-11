@@ -10,6 +10,7 @@ gparted
 grub
 grub-btrfs
 htop
+kitty
 krusader
 neofetch
 nodejs
