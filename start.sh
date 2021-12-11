@@ -108,7 +108,7 @@ do
      (2) setup zsh
      (3) zsh aliases
      (4) bash aliases
-     (8) cust grub
+     (9) cust grub
      (0) quit
     ------------------------------
 EOF
@@ -122,7 +122,7 @@ EOF
         "2") setup_zsh ;;
         "3") zsh_aliases ;;
         "4") bash_aliases ;;
-        "8") cust_grub ;;
+        "9") cust_grub ;;
         "0") quit && break ;;
      * )  echo "invalid option" ;;
     esac
