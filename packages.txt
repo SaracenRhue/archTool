@@ -1,4 +1,3 @@
-albert
 arc
 bash-completion
 celluloid
