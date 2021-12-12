@@ -73,7 +73,10 @@ EOF
              cd
              sudo rm -fr Top-5-Bootloader-Themes
              ;;
-        "0") sudo rm -fr LICENSE && exit && break ;;
+        "0") exit && break
+             cd
+             sudo rm -fr archTool 
+             ;;
      * )  echo "invalid option" ;;
     esac
     sleep 1
