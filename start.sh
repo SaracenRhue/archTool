@@ -1,86 +1,5 @@
 #!/bin/bash
 
-update () {
-    yay -Sy 
-    yay -Su 
-    yay -Qdt
-}
-
-bash_aliases () {
-    echo "neofetch" >> ~/.bashrc
-    echo "alias i='yay -S --noconfirm'" >> ~/.bashrc
-    echo "alias r='yay -R --noconfirm'" >> ~/.bashrc
-    echo "alias s='yay -Ss'" >> ~/.bashrc
-    echo "done..."
-    source ~/.bashrc
-}
-
-zsh_aliases () {
-    echo "neofetch" >> ~/.zshrc
-    echo "alias i='yay -S --noconfirm'" >> ~/.zshrc
-    echo "alias r='yay -R --noconfirm'" >> ~/.zshrc
-    echo "alias s='yay -Ss'" >> ~/.zshrc
-    echo "done..."
-    source ~/.zshrc
-}
-
-cust_grub () {
-    git clone https://github.com/ChrisTitusTech/Top-5-Bootloader-Themes
-    cd Top-5-Bootloader-Themes
-    sudo ./install.sh
-    cd
-    sudo rm -fr Top-5-Bootloader-Themes
-}
-
-quit () {
-    yay -Qdt 
-    exit
-}
-
-
-r_gnome_packages(){
-    PKGS=(
-    'yelp'
-    'python'
-    'chromium'
-    'totem'
-    'nano'
-    )
-
-    for PKG in "${PKGS[@]}"; do
-        yay -R --noconfirm $PKG
-    done
-
-}
-
-
-setup_zsh() {
-    yay -S --noconfirm zsh zsh-autosuggestions zsh-syntax-highlighting
-    #echo "plugins=(zsh-autosuggestions)" >> ~/.zshrc
-    #sudo git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-    #echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.zshrc
-    chsh -s $(which zsh)
-}
-
-i_graphicsdriver() {
-     # Graphics Drivers find and install
-    if lspci | grep -E "NVIDIA|GeForce"; then
-        yay -S --noconfirm nvidia
-    	nvidia-xconfig
-    elif lspci | grep -E "Radeon"; then
-        yay -S --noconfirm xf86-video-amdgpu
-    elif lspci | grep -E "Integrated Graphics Controller"; then
-        yay -S --noconfirm libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils
-    fi
-}
-
-setup_virt_manager() {
-    yay -S --noconfirm virt-manager qemu vde2 dnsmasq bridge-utils openbsd-netcat edk2-ovmf swtpmr iptables
-    sudo systemctl enable libvirtd.service
-    sudo systemctl start libvirtd.service
-    sudo usermod -a -G libvirt $USER
-}
-
 while :
 do
     clear
@@ -97,7 +16,8 @@ do
 EOF
     read -n1 -s
     case "$REPLY" in
-        "1") sudo pacman -S git base-devel
+        "1") # basic setup
+             sudo pacman -S git base-devel # install yay
              sudo git clone https://aur.archlinux.org/yay.git
              sudo chown -R saracen:users ./yay
              cd yay
@@ -106,16 +26,54 @@ EOF
              sudo rm -fr yay
              source ~/.bashrc
              cd archTool
-             yay -R --noconfirm python
-             yay -S --needed --noconfirm - < packages.txt
-             i_graphicsdriver
-             setup_virt_manager
+             yay -Sy && yay -Su && yay -Qdt # update
+             yay -R --noconfirm python #remove python 2.7
+             yay -S --needed --noconfirm - < packages.txt # install packages in packages.txt
+             # Graphics Drivers find and install
+             if lspci | grep -E "NVIDIA|GeForce"; then
+                 yay -S --noconfirm nvidia
+             	nvidia-xconfig
+             elif lspci | grep -E "Radeon"; then
+                 yay -S --noconfirm xf86-video-amdgpu
+             elif lspci | grep -E "Integrated Graphics Controller"; then
+                 yay -S --noconfirm libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils
+             fi
+             yay -S --noconfirm virt-manager qemu vde2 dnsmasq bridge-utils openbsd-netcat edk2-ovmf swtpmr iptables # setup virt-manager
+             sudo systemctl enable libvirtd.service
+             sudo systemctl start libvirtd.service
+             sudo usermod -a -G libvirt $USER
              ;;
-        "2") setup_zsh ;;
-        "3") zsh_aliases ;;
-        "4") bash_aliases ;;
-        "9") cust_grub ;;
-        "0") sudo rm -fr LICENSE && quit && break ;;
+        "2") # setup zsh
+             yay -S --noconfirm zsh zsh-autosuggestions zsh-syntax-highlighting 
+             #echo "plugins=(zsh-autosuggestions)" >> ~/.zshrc
+             #sudo git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+             #echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.zshrc
+             chsh -s $(which zsh)
+             ;;
+        "3") # setup zsh aliases
+             echo "neofetch" >> ~/.zshrc
+             echo "alias i='yay -S --noconfirm'" >> ~/.zshrc
+             echo "alias r='yay -R --noconfirm'" >> ~/.zshrc
+             echo "alias s='yay -Ss'" >> ~/.zshrc
+             echo "done..."
+             source ~/.zshrc
+             ;;
+        "4") # setup bash aliases
+             echo "neofetch" >> ~/.bashrc 
+             echo "alias i='yay -S --noconfirm'" >> ~/.bashrc
+             echo "alias r='yay -R --noconfirm'" >> ~/.bashrc
+             echo "alias s='yay -Ss'" >> ~/.bashrc
+             echo "done..."
+             source ~/.bashrc
+             ;;
+        "9") # install cust grub
+             git clone https://github.com/ChrisTitusTech/Top-5-Bootloader-Themes 
+             cd Top-5-Bootloader-Themes
+             sudo ./install.sh
+             cd
+             sudo rm -fr Top-5-Bootloader-Themes
+             ;;
+        "0") sudo rm -fr LICENSE && exit && break ;;
      * )  echo "invalid option" ;;
     esac
     sleep 1
@@ -123,6 +81,22 @@ done
 
 
 
+
+
+# r_gnome_packages(){
+#     PKGS=(
+#     'yelp'
+#     'python'
+#     'chromium'
+#     'totem'
+#     'nano'
+#     )
+
+#     for PKG in "${PKGS[@]}"; do
+#         yay -R --noconfirm $PKG
+#     done
+
+# }
 
 
 
