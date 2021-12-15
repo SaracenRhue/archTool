@@ -19,7 +19,7 @@ EOF
         "1") # basic setup
              sudo pacman -S git base-devel # install yay
              sudo git clone https://aur.archlinux.org/yay.git
-             sudo chown -R saracen:users ./yay
+             sudo chown -R $USER:users ./yay
              cd yay
              makepkg -si
              cd
@@ -73,7 +73,7 @@ EOF
              cd
              sudo rm -fr Top-5-Bootloader-Themes
              ;;
-        "0") break && cd && sudo rm -fr archTool && exit ;;
+        "0") break && cd && sudo rm -rf archTool && exit ;;
      * )  echo "invalid option" ;;
     esac
     sleep 1
