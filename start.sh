@@ -17,9 +17,11 @@ EOF
     read -n1 -s
     case "$REPLY" in
         "1") # basic setup
+             sudo pacman -Syu --noconfirm # update system
              sudo pacman -S git base-devel # install yay
              sudo git clone https://aur.archlinux.org/yay.git
              sudo chown -R $USER:users ./yay
+             sudo chown -W $USER:users ./yay
              cd yay
              makepkg -si
              cd
